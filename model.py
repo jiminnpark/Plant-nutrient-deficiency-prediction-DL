@@ -63,5 +63,59 @@ def fertilizer(pred):
     predicted_fertilizers = rf_classifier.predict(new_data_df)
     predicted_fertilizers = pd.Series(predicted_fertilizers).map({label: fertilizer for label, fertilizer in enumerate(dataset["Recommended Fertilizer"].unique())})
     return(predicted_fertilizers.values)
-  
- 
+
+
+def get_nutrient_actions(nutrient):
+    nutrient_actions = {
+        "boron": [
+            "Apply boron-containing fertilizers such as borax or boric acid.",
+            "Ensure uniform soil moisture to prevent boron leaching in sandy soils.",
+            "Avoid excessive boron application, as it can be toxic to plants at high concentrations."
+        ],
+        "calcium": [
+            "Apply calcium-rich fertilizers such as gypsum or calcium nitrate.",
+            "Lime acidic soils to increase calcium availability and improve soil structure.",
+            "Incorporate calcium-containing organic matter like eggshells or bone meal into the soil."
+        ],
+        "iron": [
+            "Apply iron chelate or iron sulfate as a soil drench or foliar spray.",
+            "Adjust soil pH to slightly acidic conditions to enhance iron availability.",
+            "Use iron-containing organic amendments like blood meal or fish emulsion."
+        ],
+        "magnesium": [
+            "Apply magnesium-rich fertilizers such as magnesium sulfate (Epsom salt) or dolomitic lime.",
+            "Ensure proper soil pH and drainage to prevent magnesium leaching.",
+            "Use magnesium-containing foliar sprays for rapid correction of deficiencies."
+        ],
+        "manganese": [
+            "Apply manganese sulfate or manganese chelate to the soil or as a foliar spray.",
+            "Maintain soil pH between 5.5 and 6.5 for optimal manganese uptake.",
+            "Incorporate organic materials like compost or manure to increase manganese availability."
+        ],
+        "potassium": [
+            "Apply potassium-rich fertilizers such as potassium chloride or potassium sulfate.",
+            "Maintain balanced soil pH to prevent potassium fixation in alkaline soils.",
+            "Use potassium-containing organic materials such as wood ash or kelp meal as soil amendments."
+        ],
+        "sulphur": [
+            "Apply sulfur-rich fertilizers such as elemental sulfur or ammonium sulfate.",
+            "Use sulfur-containing organic materials like gypsum or composted manure.",
+            "Avoid excessive liming, as it can reduce sulfur availability in the soil."
+        ],
+        "zinc": [
+            "Apply zinc sulfate or zinc chelate to the soil or as a foliar spray.",
+            "Use zinc-containing fertilizers or organic materials like zinc oxide or zinc lignosulfonate.",
+            "Ensure proper soil pH and organic matter content for optimal zinc uptake."
+        ]
+    }
+
+    nutrient_lower = nutrient.lower()
+    if nutrient_lower in nutrient_actions:
+        return nutrient_actions[nutrient_lower]
+    else:
+        return [
+        "Regularly inspect banana plants for signs of stress, disease, or nutrient deficiencies.",
+        "Ensure balanced nutrition by providing appropriate fertilization based on soil testing and plant nutrient requirements.",
+        "Implement integrated pest and disease management practices to control pests and diseases effectively."
+    ]
+
