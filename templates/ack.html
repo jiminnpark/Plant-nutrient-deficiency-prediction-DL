@@ -8,7 +8,8 @@
 <style>
     @import 'https://fonts.googleapis.com/css?family=Inconsolata';
 html {
-  min-height: 100%;
+  min-height: 120%;
+  min-width:120%;
   overflow:scroll;
   scrollbar-width:none;
 }
@@ -19,8 +20,8 @@ body::-webkit-scrollbar
 body {
     scrollbar-width:none;
   box-sizing: border-box;
-  height: 100%;
-  width:100%;
+  height: 120%;
+  width:120%;
   background-color: #000000;
   background-image: radial-gradient(#11581E, #041607);
   background-repeat: no-repeat;
@@ -34,21 +35,21 @@ body {
 .noise {
   pointer-events: none;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
   background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  /* background-size: cover; */
   z-index: -1;
   opacity: 0.02;
-  overflow:hidden;
+  /* overflow:hidden; */
 }
 
 .overlay {
   pointer-events: none;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
   background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
   background-size: auto 4px;
   z-index: 1;
@@ -150,6 +151,29 @@ table {
   td {
     font-weight: bold;
   }
+
+  @media only screen and (max-width: 768px) {
+        /* Adjust styles for smaller screens */
+        body {
+            font-size: 0.8rem; /* Decrease font size further */
+        }
+
+        .terminal {
+            padding: 1rem; /* Further reduce padding */
+        }
+
+        table {
+            margin-top: 10px; /* Decrease top margin for tables */
+        }
+
+        th, td {
+            padding: 6px; /* Further reduce padding for cells */
+        }
+
+        th {
+            font-size: 0.9rem; /* Decrease font size for table headers */
+        }
+    }
 </style>
 <body style="overflow:hidden;">
     <div class="noise"></div>
@@ -200,7 +224,12 @@ table {
       <td>{{zinc}}</td>
     </tr>
   </table>
-  <h2>Recommendation: <span class="errorcode">{{recommendation}}</span></h2>
+  <h2>Fertilizer: </h2>
+  <h2><span class="errorcode">{{recommendation}}</span></h2>
+  <h2>Recommended actions:</h2>
+  <h3> > <span class="errorcode">{{action1}}</span></h3>
+  <h3> > <span class="errorcode">{{action2}}</span></h3>
+  <h3> > <span class="errorcode">{{action3}}</span></h3>
 </div>
 </center>
 </body>
